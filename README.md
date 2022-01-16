@@ -19,6 +19,13 @@ stories page. The stories page shows the # of non-blank cards and total cards pe
 As the amount of information and number of cards increases, the user may experience degraded performance, depending on 
 their system. It may be beneficial to break a large project into multiple stories.
 
+To edit a card, click or touch on the card to switch it into edit mode. You can type your contents in the text field. 
+Plain text only. Any input HTML, Markdown, Javascript is encoded and displayed as plain text.
+
+To save your edits, click or touch an area outside of the text edit box. The text is saved automagically. 
+
+To rearrange cards, click or touch a card and drag it to the desired position.
+
 Try it out at https://corkmenot.com/
 
 ## Screenshots
