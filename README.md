@@ -49,6 +49,15 @@ https://example.com/path/to/program, then enter '/path/to/program' for root.
 4. Run create.sql on the MySQL/MariaDB server.
 5. Open the site in your browser. You will create an account and log in. 
 
+example: (see nginx.conf.txt for example NGINX configuration)
+
+```
+# git clone https://github.com/arduent/corkmenot.git
+# cd corkmenot
+# vi db.php
+# mysql -ucorkmenot -p corkmenot < create.sql 
+```
+
 ## Caveats
 
 There is no sort function. There is no delete function.

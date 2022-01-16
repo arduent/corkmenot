@@ -1,0 +1,39 @@
+server {
+
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name corkmenot.com www.corkmenot.com;
+
+    access_log /var/log/nginx/corkmenot-access.log;
+    error_log /var/log/nginx/corkmenot-error.log;
+    ssl_certificate /etc/ssl/certs/corkmenot/ecc.crt;
+    ssl_certificate_key /etc/ssl/certs/corkmenot/ecc.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+
+    ssl_session_cache shared:SSL:20m;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    charset utf-8;
+    fastcgi_hide_header X-Powered-By;
+
+    root /www/corkmenot;
+
+    location / {
+        index index.php;
+    }
+
+    location ~ [^/]\.php(/|$) {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+        fastcgi_pass unix:/var/run/php-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+}
