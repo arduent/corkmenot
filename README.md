@@ -23,9 +23,9 @@ Try it out at https://corkmenot.com/
 
 ## Screenshots
 
-![CorkMeNot Screenshot, card display](/)
+![CorkMeNot Screenshot, card display](https://github.com/arduent/corkmenot/blob/current/CorkMeNot-ss1.png?raw=true)
 
-![CorkMeNot Screenshot, stories display](/)
+![CorkMeNot Screenshot, stories display](https://github.com/arduent/corkmenot/blob/current/CorkMeNot-ss2.png?raw=true)
 
 
 ## Installation
