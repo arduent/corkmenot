@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>CorkMeNot</title>
+    <!--JQUERY-->
+    <script>
+
+        function xclick(c) {
+            swap(c);
+            $("#r" + c).focus();
+        }
+
+        function swap(c) {
+            $("#" + c).toggle();
+            $("#r" + c).toggle();
+        }
+
+        function save(c) {
+            var msg = $("#r" + c).val();
+            $.post("uca.php", {story: story, card: c, msg: msg})
+                .done(function (data) {
+                    $("#" + c).html(data);
+                });
+            swap(c);
+        }
+
+        var track = '';
+
+        $(document).ready(function () {
+            $(".event").on("dragstart", function (event) {
+                var dt = event.originalEvent.dataTransfer;
+                dt.setData('Text', $(this).attr('id'));
+                track = $(this).attr('id');
+            });
+            $("table td").on("dragenter dragover drop", function (event) {
+                event.preventDefault();
+                if (event.type === 'drop') {
+                    var l = $(this).attr('id');
+                    var s = l.replace('tc', 'c');
+                    swapper(track, s);
+                }
+                ;
+            });
+        })
+
+
+        function swapper(ca, cb) {
+            $.post("swapper.php", {story: story, a: ca, b: cb});
+            var a = parseInt(ca.replace('c', ''));
+            var b = parseInt(cb.replace('c', ''));
+            if (a < b) {
+                var tmp = $("#c" + a).html();
+                var ttmp = $("#rc" + a).val();
+                for (i = a; i < b; i++) {
+                    $("#c" + i).html($("#c" + (i + 1)).html());
+                    $("#rc" + i).val($("#rc" + (i + 1)).val());
+                }
+                $("#c" + b).html(tmp);
+                $("#rc" + b).val(ttmp);
+            } else {
+                var tmp = $("#c" + a).html();
+                var ttmp = $("#rc" + a).val();
+                for (i = a; i > b; i--) {
+                    $("#c" + i).html($("#c" + (i - 1)).html());
+                    $("#rc" + i).val($("#rc" + (i - 1)).val());
+                }
+                $("#c" + b).html(tmp);
+                $("#rc" + b).val(ttmp);
+            }
+        }
+
+        function verify() {
+            $("#name").hide();
+            $("#first_name").val('');
+            $("#email").show();
+        }
+
+    </script>
+
+    <style>
+        .spaced {
+            border-spacing: 10px;
+        }
+
+        .bgwhite {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .hdr {
+            background-color: #111;
+            padding: 10px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            padding: 5px 9px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+
+        .bluebutton {
+            background-color: #007BFF;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            padding: 5px 9px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+
+        #email {
+            display: none;
+        }
+
+        #name {
+        }
+
+        th a {
+            color: #fff;
+        }
+
+        .erd {
+            width: 90%;
+            height: 100%;
+            display: none;
+        }
+
+        .event {
+            width: 220px;
+            height: 130px;
+            font-size: 12px;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .resize-drag {
+            border: 1px solid #999;
+            width: 220px;
+            height: 130px;
+            border-radius: 2px;
+            padding: 5px;
+            margin: 1rem;
+            background-color: #fff;
+            color: black;
+            font-size: 14px;
+            font-family: sans-serif;
+            touch-action: none;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #EFD081;
+/*
+            background-image: url('/think/Depositphotos_19522775_L.jpg');
+            background-repeat: repeat;
+*/
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="hdr">
+    <!--HEADER IMAGE-->
+</div>
+<!--CARDS-->
+
+</body>
+</html>
+
