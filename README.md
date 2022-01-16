@@ -59,5 +59,5 @@ The following cookies are used:
 
 ## License
 
-See LICENSE.txt 
+See LICENSE.txt  
 This program includes jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license 
