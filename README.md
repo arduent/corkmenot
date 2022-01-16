@@ -21,6 +21,13 @@ their system. It may be beneficial to break a large project into multiple storie
 
 Try it out at https://corkmenot.com/
 
+## Screenshots
+
+![CorkMeNot Screenshot, card display](/)
+
+![CorkMeNot Screenshot, stories display](/)
+
+
 ## Installation
 
 CorkeMeNot is hosted on a web server such as NGINX, with PHP. CorkMeNot has been tested with PHP Version 8.1, however 
