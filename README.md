@@ -75,3 +75,7 @@ The following cookies are used:
 
 See LICENSE.txt  
 This program includes jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license 
+
+## Questions, Issues, Support
+
+Contact me by email waitman@waitman.net, Signal/WhatsApp +18299143703, XMPP wago@waitman.net  
